@@ -4,6 +4,7 @@ const apellidosInput = document.getElementById('apellidos');
 const rutInput = document.getElementById('rut');
 const correoInput = document.getElementById('correo');
 const fotoInput = document.getElementById('exampleFormControlFile1');
+
 form.addEventListener('submit', (event) => {
   if (nombresInput.value === '') {
     alert('Por favor, ingrese sus nombres.');
