@@ -1,0 +1,73 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    width: auto;
+}
+/*
+div {
+    border: 1px solid blue;
+}
+*/
+.logo {
+    height: 70px;
+    width: 70px;
+}
+
+.menu-superior {
+    text-align: right;
+}
+
+.menu-superior li {
+    display: inline;
+    margin-right: 0px;
+}
+
+.producto {
+    width: 100%;
+}
+
+
+#foto{
+    margin: 24px ;
+}
+
+.ancho-boton{
+    width: 100px;
+}
+
+#disponibilidad1{
+    color: green;
+}
+
+#disponibilidad2{
+    color: blue;
+}
+
+#disponibilidad3{
+    color: red;
+}
+
+.contenedor{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*
+aqui comienza la parte de los estilos del script de la api
+*/
+.item-title{
+    color: chocolate;
+}
+.item-price{
+    font-size: 30px;
+    color: darkgreen
+}
+
+.item-desc{
+    color: black;
+}
+
+.item-categ{
+    color: blue;
+}
+

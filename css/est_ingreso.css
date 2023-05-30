@@ -1,0 +1,89 @@
+/* Estilo para resaltar campos inválidos */
+input.error,
+select.error,
+textarea.error {
+  border-color: red; /* Cambia el color del borde */
+}
+
+label.error {
+  color: red; /* Cambia el color del texto de error */
+  margin-top: 5px; /* Agrega un espacio entre el campo y el mensaje de error */
+}
+
+
+body {
+  padding: 0px;
+}
+.logo {
+  height: 70px;
+  width: 70px;
+}
+.menu-superior {
+  text-align: right;
+}
+.menu-superior li {
+  display: inline;
+  margin-right: 20px;
+}
+.producto {
+  width: 100%;
+}
+
+p{
+  text-align: center;
+  text-size-adjust: 10%;
+}
+.row{
+  width:800px;
+  text-align: center;
+}
+hr{
+  width: 800px;
+}
+.ingreso{
+  height: 100vh;
+  /*display: flex;*/
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.login{
+  width: 360px;
+  height: min-content;
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  margin: auto;
+}
+.login form{
+  font-size: 20px;
+}
+.login form .form-group{
+  margin-bottom: 12px;
+}
+.login form input [type="submit"]{
+  font-size: 20px;
+  margin-top: 15px;
+}
+.contenedor{
+  width: 30%;
+}
+.opciones{
+  text-align: center;
+}
+.sep{
+  width: auto;
+}
+.equipo{
+  float: left;
+  margin: 20px;
+}
+#datos, #foto{
+  
+  margin: 24px ;
+}
