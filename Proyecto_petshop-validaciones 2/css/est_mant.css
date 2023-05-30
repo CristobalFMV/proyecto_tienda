@@ -1,0 +1,19 @@
+.img-thumbnail{
+    border: 1px;
+}
+.logo {
+    height: 70px;
+    width: 70px;
+}
+
+/* Estilo para resaltar campos inválidos */
+input.error,
+select.error,
+textarea.error {
+  border-color: red; /* Cambia el color del borde */
+}
+
+label.error {
+  color: red; /* Cambia el color del texto de error */
+  margin-top: 5px; /* Agrega un espacio entre el campo y el mensaje de error */
+}

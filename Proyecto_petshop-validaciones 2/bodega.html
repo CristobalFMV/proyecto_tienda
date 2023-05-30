@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodega</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="css/estilos_pag.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+</head>
+<body class="loginn ingreso">
+    <div class="container-fluid contenedor">
+      <!-- cabecera -->
+      <div id="navbar">
+      </div>
+  <h1>Mantenedor de Bodega</h1>
+  <div class="form-group">
+    <label for="categoria">Categoría:</label>
+    <select class="form-control" id="categoria">
+      <option value="perro">Perro</option>
+      <option value="gato">Gato</option>
+      <option value="pato">Pato</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="nombre">Nombre:</label>
+    <input type="text" class="form-control" id="nombre">
+  </div>
+  <div class="form-group">
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" class="form-control" id="cantidad" min="1">
+  </div>
+  <div class="form-group">
+    <label for="imagen">Imagen:</label>
+    <input type="file" class="form-control-file" id="imagen">
+  </div>
+
+  <button type="button" class="btn btn-primary btn-block sha384-qKXV1j0HvMUeCBQ">Agregar</button>
+  <button type="button" class="btn btn-secondary btn-block mb-3">Nuevo</button>
+</div>
+
+<!--jQuery and Popper.js-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/XwpSbdEJg1wMIdf"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
+
+
+<div class="container">
+  <table class="table table-striped mx-auto">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Categoría</th>
+        <th>Nombre</th>
+        <th>Estado</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <body>
+      <tr>
+        <td>1</td>
+        <td>Perro</td>
+        <td>Saco de alimento Royan Canin</td>
+        <td>Disponible</td>
+        <td><button class="btn btn-danger">Eliminar</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Perro</td>
+        <td>Hueso gris 3kg</td>
+        <td>En bodega</td>
+        <td><button class="btn btn-danger">Eliminar</button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Gato</td>
+        <td>Raton de juguete</td>
+        <td>En bodega</td>
+        <td><button class="btn btn-danger">Eliminar</button></td>
+      </tr>
+        <tr>
+          <td>4</td>
+          <td>Gato</td>
+          <td>Pescado de juguete</td>
+          <td>Agotado</td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+        </tr>
+      </tr>
+    </body>
+  </table>
+</div>
+<div id="footer">
+</div>

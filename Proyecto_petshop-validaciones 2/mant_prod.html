@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenedor de productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="css/est_mant.css">
+</head>
+<body>
+    <!--CONTENEDOR-->
+    <div class="container-fluid">
+        <!-- cabecera -->
+        <div id="navbar">
+        </div>
+        <h1>Mantenedor de productos</h1>
+        <br>
+        <!--Primera fila-->
+        <div class = "row">
+            <!--Primera columna de la primera fila-->
+            <div class="col-sm primero">
+                <form method="POST" id="mantenedor_prod" action="">
+                    <!--Id-->
+                    <div class="mb-3">
+                        <label for="ID" class="form-label">ID:</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="IdProducto"
+                            name="IdProducto" 
+                            aria-describedby="idHelp" 
+                            placeholder="Ingrese un ID válido"
+                            value=""
+                            />
+                    </div>
+                    <!--Selector-->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="SelectorCategoria">Categoría</label>
+                        <select 
+                            name="SelectorCategoria" 
+                            class="form-select" 
+                            id="SelectorCategoria">
+                            <option selected>Elija una categoría...</option>
+                            <option value="1">Perros</option>
+                            <option value="2">Gatos</option>
+                        </select>
+                    </div>
+                    <!--Nombre-->
+                    <div class="mb-3">
+                        <label for="Nombre" class="form-label">Nombre:</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="Nombre"
+                            name="Nombre" 
+                            aria-describedby="NombreHelp" 
+                            placeholder="Ingrese un nombre válido"
+                            value=""
+                            />
+                    </div>
+                    <!--Descripcion-->
+                    <div class="form-group">
+                        <label for="Descripcion">Descripción:</label>
+                        <textarea
+                            name="areaTexto" 
+                            class="form-control "
+                            id="areaTexto" 
+                            rows="3">
+                        </textarea>
+                    </div>
+                    <!--Precio-->
+                    <div class="mb-3">
+                        <label for="Precio" class="form-label">Precio:</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="Precio"
+                            name="Precio" 
+                            aria-describedby="PrecioHelp" 
+                            placeholder="Ingrese un Precio válido">
+                    </div>
+                    <!--Descuentos-->
+                    <div class="mb-3">
+                        <label for="DescuentoSus" class="form-label">Descuento suscriptor:</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="DescuentoSus"
+                            name="DescuentoSus" 
+                            aria-describedby="DescuentoHelp" 
+                            placeholder="Ingrese porcentaje de descuento">
+                    </div>
+                    <!--Descuento por oferta-->
+                    <div class="mb-3">
+                        <label for="DescuentoOf" class="form-label">Descuento en oferta:</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="DescuentoOf"
+                            name="DescuentoOf" 
+                            aria-describedby="DescuentoHelp" 
+                            placeholder="Ingrese porcentaje de descuento">
+                    </div>
+                    <!--Botones-->
+                    <button type="button" class="btn btn-primary" id="btnNuevo">Nuevo</button>
+                    <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
+                    <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
+                    <button type="submit" class="btn btn-primary" id="btnEnviar">Confirmar</button>
+                </form>
+            </div>
+            <!--Segunda columna de la primera fila-->
+            <div class="col-sm">
+                <h5>Imagen del producto:</h5>
+                <label class="form-label" for="imagenProd">Seleccione un archivo:</label>
+                <input type="file" class="form-control" id="imgSelec">
+            </div>
+            <!--Segunda fila-->
+        <div class="row">
+            <!--Primera columna de la segunda fila-->
+            <div class="col-md-8">
+            <table id="est_mant" class="table table-striped" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoría</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th>% Desc Subscriptor</th>
+                        <th>% Desc Oferta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>27</td>
+                        <td>Perros</td>
+                        <td>Saco alimento Royan Canin</td>
+                        <td>Saco Royan Canin de 3 Kilos</td>
+                        <td>$8.000</td>
+                        <td>5%</td>
+                        <td>2%</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>Gato</td>
+                        <td>Saco alimento don cuchito</td>
+                        <td>Saco don CuchitoCanin de 1 Kilo</td>
+                        <td>$2.000</td>
+                        <td>5%</td>
+                        <td>2%</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td>Perros</td>
+                        <td>Saco alimento Royan Canin</td>
+                        <td>Saco Royan Canin de 3 Kilos</td>
+                        <td>$8.000</td>
+                        <td>5%</td>
+                        <td>2%</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>Gato</td>
+                        <td>Saco alimento don cuchito</td>
+                        <td>Saco don CuchitoCanin de 1 Kilo</td>
+                        <td>$2.000</td>
+                        <td>5%</td>
+                        <td>2%</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <!-- pie de pagina -->
+    <br><br>
+    <hr>
+    <div class="row">
+        <div id="footer">
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+<script src="js/botones.js" type="text/javascript"></script>
+<script src="js/script.js"></script>
+</html>
