@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<main role="main">
+  <div class="container">
+    <section class="text-center">
+      <h1>Historial de Ventas</h1>
+      <br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Número de boleta</th>
+            <th>Fecha</th>
+            <th>Nombre del Cliente</th>
+            <th>Subscripción</th>
+            <th>Monto total</th>
+            <th>Estado actual</th>
+            <th>Detalle</th>
+            <th>Cambiar Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for venta in ventas %}
+          <tr>
+            <td>{{ venta.numero_boleta }}</td>
+            <td>{{ venta.fecha }}</td>
+            <td>{{ venta.nombre_cliente }}</td>
+            <td>{{ venta.subscripcion|yesno:"Sí,No"  }}</td>
+            <td>{{ venta.monto_total }}</td>
+            <td>{{ venta.estado_actual }}</td>
+            <td><a href="{% url 'boleta' %}">Ver detalle</a></td>
+            <td><a href="{% url 'bodega' %}">Anulado&nbsp;Vendido&nbsp;Despachado&nbsp;Entregado</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+</main>
+{% endblock content %}

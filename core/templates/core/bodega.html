@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<body class="loginn ingreso">
+    <div class="container-fluid contenedor">
+        <!-- cabecera -->
+        <div id="navbar">
+        </div>
+        <h1>Mantenedor de Bodega</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="categoria">Categoría:</label>
+                <select class="form-control" id="categoria" name="categoria">
+                    {% for categoria in categorias %}
+                    <option value="{{ categoria.idCategoria }}">{{ categoria.nombreCategoria }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <input type="text" class="form-control" id="estado" name="estado">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block sha384-qKXV1j0HvMUeCBQ">Agregar</button>
+        </form>
+        <button type="button" class="btn btn-secondary btn-block mb-3">Nuevo</button>
+    </div>
+
+    <div class="container">
+        <table class="table table-striped mx-auto">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Categoría</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bodega in bodegas %}
+                <tr>
+                    <td>{{ bodega.id }}</td>
+                    <td>{{ bodega.categoria.nombreCategoria }}</td>
+                    <td>{{ bodega.nombre }}</td>
+                    <td>{{ bodega.estado }}</td>
+                    <td>
+                        <a href="?eliminar={{ bodega.id }}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock content %}

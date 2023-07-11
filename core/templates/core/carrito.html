@@ -1,0 +1,95 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+  <!-- carrito -->
+  <main role="main">
+    <div class="container">
+      <section class="text-center">
+        <h1>Carrito de compra</h1>
+        <br>
+        <table class="table table-hover">
+          <thead>
+            <th scope="col">#</th>
+            <th scope="col" class="d-none d-lg-block d-lg-table-cell">Categoría</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col" class="text-end d-none d-lg-block d-lg-table-cell">%Subcriptor</th>
+            <th scope="col" class="text-end d-none d-lg-block d-lg-table-cell">%Oferta</th>
+            <th scope="col" class="text-end d-none d-lg-block d-lg-table-cell">%Desc Total</th>
+            <th scope="col">Descuento</th>
+            <th scope="col">Precio a pagar</th>
+            <th scope="col">Opciones</th>
+          </thead>
+          <tbody>
+            {% for carrito in carritos %}
+            <tr>
+              <td scope="row">{{ carrito.id }}</td>
+              <td scope="col" class="d-none d-lg-block d-lg-table-cell">{{ carrito.producto.categoria }}</td>
+              <td scope="col">{{ carrito.producto.marca }}</td>
+              <td scope="col">${{ carrito.precio_unitario }}</td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell">{{ carrito.descuento_subcriptor }}%</td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell">{{ carrito.descuento_oferta }}%</td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell">{{ carrito.descuento_total }}%</td>
+              <td scope="col">${{ carrito.descuento }}</td>
+              <td scope="col">${{ carrito.precio_total }}</td>
+              <td scope="col">
+                <form action="{% url 'eliminar_carrito' carrito.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    Eliminar
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td scope="row"></td>
+              <td scope="col" class="d-none d-lg-block d-lg-table-cell"></td>
+              <td scope="col"></td>
+              <td scope="col"></td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell"></td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell"> </td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell"></td>
+              <td scope="col"></td>
+              <td scope="col">Precio sin IVA</td>
+              <td scope="col">{{ precio_sin_iva }}</td>
+            </tr>
+            <tr>
+              <td scope="row"></td>
+              <td scope="col" class="d-none d-lg-block d-lg-table-cell"></td>
+              <td scope="col"></td>
+              <td scope="col"></td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell"></td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell"> </td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell"></td>
+              <td scope="col"></td>
+              <td scope="col">Valor del IVA</td>
+              <td scope="col">{{ valor_iva }}</td>
+            </tr>
+            <tr>
+              <td scope="row"></td>
+              <td scope="col" class="d-none d-lg-block d-lg-table-cell"></td>
+              <td scope="col"></td>
+              <td scope="col"></td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell"></td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell"> </td>
+              <td scope="col" class="text-end d-none d-lg-block d-lg-table-cell"></td>
+              <td scope="col"></td>
+              <td scope="col">Total a pagar</td>
+              <td scope="col">{{ total_pagar }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+    </div>
+  </main>
+  <hr>
+  <div style="float: right;">
+    <button type="button" href="a" class="btn btn-danger">Cancelar compra</button>
+    &nbsp;&nbsp;<a href="{% url 'pagar' %}" class="btn btn-success">Pagar</a>&nbsp;&nbsp;
+  </div>
+{% endblock content %}

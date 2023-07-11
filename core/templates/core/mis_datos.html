@@ -1,0 +1,131 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block content %}
+      <!-- titulo -->
+      <h1>
+        Mis datos
+      </h1>
+      <br>
+
+      <!-- todos los datos de cliente-->
+      <form action="">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col" id="datos">
+              
+              <div class="mb-3">
+                <label for="rut">Rut</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="rut"
+                  name="rut" 
+                  aria-describedby="rutHelp" 
+                  placeholder="ej;10123123-k"
+                  value="{{ user.rut }}"/>
+              </div>
+
+              <div class="mb-3">
+                <label for="nombre">Nombres</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="nombres"
+                  name="nombres" 
+                  placeholder="Ingresa tus nombres"
+                  value="{{ user.nombres }}"/>
+              </div>
+
+              <div class="mb-3">
+                <label for="apellidos">Apellidos</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="apellidos"
+                  name="apellidos"
+                  value="{{ user.apellidos }}"
+                  placeholder="Ingresa tus apellidos"/>
+              </div>
+
+              <div class="mb-3">
+                <label for="correo">Correo</label>
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  id="correo"
+                  name="email" 
+                  value="{{ user.correo }}"
+                  placeholder="Ingresa tu correo">
+              </div>
+
+              <div class="mb-3">
+                <label for="direccion">Direccion</label>
+                <textarea 
+                  class="form-control" 
+                  id="direccion"
+                  name="direccion" 
+                  rows="3" 
+                  placeholder="Direccion">{{ user.direccion }}</textarea>
+              </div>
+
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Deseo inscribirme con un aporte </label>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputPassword1">Password</label>
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  id="Contraseña1"
+                  name="contraseña1" 
+                  placeholder="Password">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputPassword1">Password</label>
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  id="Contraseña2"
+                  name="contraseña2" 
+                  placeholder="Vuelva ingresar la Password">
+              </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="text-center">
+              <label for="foto" class="form-label">Ingrese una foto para su perfil</label>
+            </div>
+            <div class="row mt-3">
+              <div class="col text-center">
+                <div class="d-flex justify-content-center align-items-center" id="foto">
+                  <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="rounded-circle">
+                </div>
+              </div>
+            <div class="mb-3">
+              <div class="col text-center">
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Ingrese su foto o imagen</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                  </div>
+                  <div>
+                  </div>
+                  <div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col text-center">
+                      <button type="submit" class="btn btn-primary ancho-boton">Guardar</button>
+                      <button type="reset" class="btn btn-primary ancho-boton">Limpiar</button>
+                    </div>
+      </form>
+{% endblock content %}
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+    <script src="/core/static/core/js/val_mis_datos.js"></script>
+{% endblock scripts %}

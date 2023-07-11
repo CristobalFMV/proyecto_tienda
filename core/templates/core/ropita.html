@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- cabecera -->
+    <div id="navbar">
+    </div>
+
+    <!-- cuerpo de la pagina -->
+    <div class="row"> 
+        <div class="col">
+            <!-- titulo -->
+            <h1 style="text-align:center">¡Concursa por una prenda de vestir!</h1>
+            <h3 style="text-align:center">¡Por compras superiores a $20.000 en productos ya estás participando!</h3>
+
+            <!-- productos -->
+            <div class="container-fluid">
+                <!-- aquí se muestra la ropa -->
+                <div id="apis-ropita" class="row">
+                    {% for ropa in ropas %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div class="card">
+                                <img src="{{ ropa.imagen.url }}" class="card-img-top" alt="{{ ropa.nombre }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ ropa.nombre }}</h5>
+                                    <p class="card-text">{{ ropa.descripcion }}</p>
+                                    <p class="card-text">Precio: ${{ ropa.precio }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

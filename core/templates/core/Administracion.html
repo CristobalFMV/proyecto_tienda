@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!--Administracion  -->
+<!-- Título -->
+  <h1>&nbsp;Administración de usuario</h1>
+  <!-- Contenido -->
+  <p>
+    &nbsp; Bienvenido al archivo de administración de usuario.
+    Aquí encontrarás acceso a herramientas esenciales para la gestión de tu sitio web.
+    Los siguientes enlaces te llevarán a importantes mantenedores que te permitirán administrar y &nbsp;&nbsp;controlar el
+    contenido de tu sitio:
+    Mantenedor de Usuario, Mantenedor de Productos, Mantenedor de Ventas y Mantenedor de Bodega.
+    Con estas herramientas a tu disposición, podrás asegurarte de que tu sitio web funcione de &nbsp;&nbsp;manera eficiente y esté
+    actualizado en todo momento.
+  </p>
+<!-- Enlaces -->
+<div class="enlaces">
+  <ul>
+    <li><a href="{% url 'usuario' %}">Mantenedor de Usuarios</a></li>
+    <li><a href="{% url 'mant_prod' 'ins' -1 %}">Mantenedor de Productos</a></li>
+    <li><a href="{% url 'ventas' %}">Mantenedor de Ventas</a></li>
+    <li><a href="{% url 'bodega' %}">Mantenedor de Bodega</a></li>
+  </ul>
+</div>
+{% endblock content %}

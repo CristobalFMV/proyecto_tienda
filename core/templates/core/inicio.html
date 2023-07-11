@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  #tienda_producto_recuadro {
+    width: 250px;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    border: 5px outset #25a41c;
+}
+#disponibilidad1{
+  color: green;
+}
+#disponibilidad2{
+  color: red;
+}
+</style>
+<!-- cuerpo de la pagina -->
+<div class="row">
+  <div class="col">
+    <!-- titulo -->
+    <h1>PetShop</h1>
+
+    <!-- carrusel -->
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="{% static 'core/images/foto1.jpg'%}"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="{% static 'core/images/foto2.jpg'%}"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="{% static 'core/images/foto3.jpg'%}"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <!-- productos -->
+    <div class="container">
+      <h1 style="text-align: center !important">Productos</h1>
+      <br /><br />
+      {% if list %}
+      <div class="row">
+        {% for pro in list %}
+          <div id="tienda_producto_recuadro" class="card mb-4">
+            <img src="/media/{{ pro.imagen }}" id="tienda_producto_imagen" class="card-img-top" alt="" />
+            <div class="card-body">
+              {% if pro.stockprod > 0 %}
+                <h3 id="disponibilidad1">DISPONIBLE</h3>
+              {% else %}
+                <h3 id="disponibilidad2">AGOTADO</h3>
+              {% endif %}
+              <a href="{% url 'ficha' pro.codigo %}" class="col-md-4">
+                <h5 class="card-title">{{ pro.nombreprod }}</h5>
+              </a>
+              <p class="card-text"> ${{ pro.precio }}</p>
+              <p class="card-text">Descripcion: {{ pro.descripcion }}</p>
+              <p>En stock: {{ pro.stockprod }} unidad/es</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="tienda_link_home">
+        <a href="{% url 'inicio' %}" class="btn btn-info btn-sm"
+          >Ir a la página de inicio</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

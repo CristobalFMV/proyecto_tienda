@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>Mantenedor de Usuarios</h1>
+        <br>
+        <div class="row">
+            <div class="col-sm">
+                <form id="form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="reset" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+            <div class="col-sm">
+                <h5>Imagen de Usuario:</h5>
+                <label class="form-label" for="imagenProd">Seleccione un archivo:</label>
+                <input type="file" class="form-control" id="imgSelec" name="foto_perfil">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <table id="est_mant" class="table table-striped" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo usuario</th>
+                            <th>Rut</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Correo</th>
+                            <th>Dirección</th>
+                            <th>Con subscripción</th>
+                            <th>Imagen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for usuario in usuarios %}
+                            <tr>
+                                <td>{{ usuario.id }}</td>
+                                <td>{% if usuario.is_superuser %}Administrador{% else %}Cliente{% endif %}</td>
+                                <td>{{ usuario.rut }}</td>
+                                <td>{{ usuario.nombres }}</td>
+                                <td>{{ usuario.apellidos }}</td>
+                                <td>{{ usuario.correo }}</td>
+                                <td>{{ usuario.direccion }}</td>
+                                <td>{{ usuario.aporte|yesno:"Sí,No" }}</td>
+                                <td>{{ usuario.foto_perfil.url }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

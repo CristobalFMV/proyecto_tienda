@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %} {% load static %} {% block content %}
+<div class="container-fluid">
+  <!-- cabecera -->
+  <div id="navbar"></div>
+  <!-- cuerpo de la pagina -->
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 texto">
+      <!-- titulo -->
+      <h1>Nosotros</h1>
+      <hr />
+      <textalign:center></textalign:center>
+      <p>
+        Nuestra empresa es una tienda especializada en la venta de artículos
+        para mascotas. Nos dedicamos a proporcionar todo lo que los dueños de
+        mascotas necesitan para cuidar y disfrutar de sus amigos peludos.
+        Ofrecemos una amplia variedad de productos para perros, gatos, aves,
+        peces, reptiles y otros animales domésticos.
+      </p>
+      <p>
+        En nuestra tienda, encontrarás alimentos de alta calidad, accesorios
+        para el cuidado de la salud, juguetes, ropa y otros artículos para
+        satisfacer las necesidades de tus mascotas. Todos nuestros productos son
+        seleccionados cuidadosamente para garantizar la calidad y la seguridad.
+      </p>
+      <p>
+        Además de la venta de productos, ofrecemos asesoramiento y
+        recomendaciones personalizadas para cada mascota. Nuestros empleados son
+        expertos en cuidado de mascotas y están disponibles para ayudarte a
+        encontrar los productos adecuados para tus mascotas.
+      </p>
+      <p>
+        En resumen, nuestra empresa es el destino ideal para los dueños de
+        mascotas que buscan productos de alta calidad y un servicio excepcional.
+        Nos esforzamos por proporcionar una experiencia de compra única y
+        satisfactoria para cada uno de nuestros clientes y sus mascotas.
+      </p>
+    </div>
+  </div>
+  <hr />
+  <!-- Pie de página -->
+  <div class="row pie">
+    <div class="col">
+      <h4>Nuestro equipo:</h4>
+      <div class="equipo">
+        <img src="{% static 'core/images/fake-human-circle-img.png'%}" alt="" />
+        <p>Gerente de local 1</p>
+      </div>
+      <div class="equipo">
+        <img src="{% static 'core/images/fake-human-circle-img.png'%}" alt="" />
+        <p>Gerente de local 2</p>
+      </div>
+      <div class="equipo">
+        <img src="{% static 'core/images/fake-human-circle-img.png'%}" alt="" />
+        <p>Gerente de local 3</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,89 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.mini_producto {
+    width: 100px;
+}
+#tabla_datos {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#tabla_datos th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#tabla_datos th {
+    background-color:green;
+    color: black;
+}
+</style>
+<div class="container">
+    <h1 style="text-align: center !important;">
+        Mantenedor de producto
+    </h1>
+    {% if form %}
+    <form method="POST" action="" enctype="multipart/form-data" id="formulario">
+        <div class="form-group">
+            {% csrf_token %} {{ form.as_p }}
+        </div>
+        <input type="submit" class="btn btn-primary btnwidth" id="id_guardar" value="Guardar">
+        <!-- <input type="reset" class="btn btn-primary btnwidth" id="id_nuevo" value="Nuevo"> -->
+        <a class="btn btn-success btnwidth" href="{% url 'mant_prod' 'ins' -5 %}">Limpiar</a>
+        {% if id != '-1' %}
+        <a class="btn btn-danger btnwidth" href="{% url 'mant_prod' 'del' id %}">Eliminar</a>
+        {% endif %}
+        <a class="btn btn-info btnwidth" href="{% url 'inicio' %}">Inicio</a>
+        {% if mesg %}
+        <div id="form_message" class="alert alert-danger" role="alert">{{ mesg }}</div>
+        {% endif %}
+    </form>
+    {% endif %}
+    {% if list %}
+    <table id="tabla_datos">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre de producto</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+                <th>Precio</th>
+                <th>Porcentaje de descuento subscriptor </th>
+                <th>Porcentaje de descuento por oferta </th>
+                <th>Categoría</th>
+                <th class="titulo_boton">Editar</th>
+                <th class="titulo_boton">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pro in list %}
+            <tr>
+                <td>{{ pro.codigo }}</td>
+                <td>{{ pro.nombreprod }}</td>
+                <td>{{ pro.descripcion }}</td>
+                <td><img src="/media/{{pro.imagen}}" class="mini_producto" alt=""></td>
+                <td>${{ pro.precio }}</td>
+                <td>%{{ pro.descuento_subscriptor }}</td>
+                <td>%{{ pro.descuento_oferta }}</td>
+                <td>{{ pro.categoria }}</td>
+                <td><a href="{% url 'mant_prod' 'upd' pro.codigo %}" 
+                    class="btn btn-primary btn-sm boton_chico">Editar</a></td>
+                <td><a href="{% url 'mant_prod' 'del' pro.codigo %}" 
+                    class="btn btn-danger btn-sm boton_chico">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    <br>
+    <a href="http://127.0.0.1:8000/admin" class="btn btn-info btn-sm">Administración</a>
+    <a href="{% url 'inicio' %}" class="btn btn-info btn-sm">Inicio</a>
+</div>
+
+{% endblock content %}

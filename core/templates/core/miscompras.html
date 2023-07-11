@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- tabla de compras anteriores -->
+    <h1>Mis compras anteriores</h1>
+    <table id="comp_ant" class="table table-striped" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Nro boleta</th>
+                <th>Fecha venta</th>
+                <th>Fecha despacho</th>
+                <th>Fecha entrega</th>
+                <th>Monto total</th>
+                <th>Estado actual</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for compra in compras %}
+                <tr>
+                    <td>{{ compra.numero_boleta }}</td>
+                    <td>{{ compra.fecha_venta }}</td>
+                    <td>{{ compra.fecha_despacho }}</td>
+                    <td>{{ compra.fecha_entrega }}</td>
+                    <td>{{ compra.monto_total }}</td>
+                    <td>{{ compra.estado_actual }}</td>
+                    <td><a href="{% url 'boleta' %}">Ver detalle</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

@@ -1,0 +1,77 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .ficha_producto_imagen {
+    width: 100%;
+    margin:auto;
+}
+#disponibilidad1{
+  color: green;
+}
+#disponibilidad2{
+  color: red;
+}
+</style>
+<!-- cuerpo de la pagina -->
+<div class="row">
+  <div class="col">
+    <!-- titulo -->
+    <h1>{{ producto.nombreprod }}</h1>
+    <form action="">
+      <div class="container-fluid">
+        <div class="row">
+          <!--Foto producto-->
+          <div class="col" id="datos">
+            <img
+              class="ficha_producto_imagen"
+              src="/media/{{ producto.imagen }}" 
+              alt=""
+            />
+          </div>
+
+          <!--Datos producto-->
+          <div class="col" id="foto">
+            <h1>{{ producto.nombreprod }}</h1>
+            {% if producto.stockprod > 0 %}
+            <h3 id="disponibilidad1">DISPONIBLE</h3>
+            {% else %}
+            <h3 id="disponibilidad2">AGOTADO</h3>
+            {% endif %}
+            <p class="fs-1">${{ producto.precio }}</p>
+            <br />
+            <p class="fs-3">
+              Descripción: <br />
+              {{ producto.descripcion }} <br />
+              En stock: {{ producto.stockprod }} unidad/es
+            </p>
+          </div>
+        </div>
+        <!--Botones-->
+        <div class="row">
+          <div class="col text-center">
+            <form action="{% url 'agregar_carrito' producto.codigo %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary ancho-boton">
+                Comprar ahora
+              </button>
+            </form>
+            <form action="{% url 'agregar_carrito' producto.codigo %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary ancho-boton">
+                Agregar al carrito
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </form>
+    {% if mensaje %}
+    <div class="alert alert-success mt-3" role="alert">
+      {{ mensaje }}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
